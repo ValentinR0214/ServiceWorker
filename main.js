@@ -27,7 +27,16 @@ function logStatus(status) {
 // Registro del Service Worker
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./sw.js').then(registration => {
+
+
+        // Extrae el nombre del repositorio de la URL (e.g., /ServiceWorker/)
+        const path = window.location.pathname.split('/');
+        const repoName = path.length > 1 && path[1] ? `/${path[1]}` : '';
+
+        // Forma la ruta completa: /ServiceWorker/sw.js
+        const swPath = `${repoName}/sw.js`;
+
+        navigator.serviceWorker.register('swPath').then(registration => {
             console.log('Service Worker registrado con éxito:', registration);
 
             // Escuchar el estado de instalación y activación
@@ -58,8 +67,8 @@ if ('serviceWorker' in navigator) {
                 if (registration.active && registration.active.state === 'activated' && !registration.installing && !registration.waiting) {
                     logStatus('Ocioso');
                 }
-            }, 3000); 
-            
+            }, 3000);
+
 
             // Detección de actualización del Service Worker
             registration.addEventListener('updatefound', () => {
@@ -68,9 +77,9 @@ if ('serviceWorker' in navigator) {
                     logStatus('Actualizando');
                     newWorker.addEventListener('statechange', (event) => {
                         if (event.target.state === 'installed') {
-                             logStatus('Instalado / Esperando (nueva versión)');
+                            logStatus('Instalado / Esperando (nueva versión)');
                         } else if (event.target.state === 'activated') {
-                             logStatus('Activo (nueva versión)');
+                            logStatus('Activo (nueva versión)');
                         }
                     });
                 }
