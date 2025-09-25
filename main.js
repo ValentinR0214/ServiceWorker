@@ -36,7 +36,7 @@ if ('serviceWorker' in navigator) {
         // Forma la ruta completa: /ServiceWorker/sw.js
         const swPath = `${repoName}/sw.js`;
 
-        navigator.serviceWorker.register('swPath').then(registration => {
+        navigator.serviceWorker.register(swPath).then(registration => {
             console.log('Service Worker registrado con éxito:', registration);
 
             // Escuchar el estado de instalación y activación
