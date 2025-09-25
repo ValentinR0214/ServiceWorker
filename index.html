@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitacora de Service Worker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        #log-container {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-top: 20px;
+            background-color: #f9f9f9;
+        }
+        .log-entry {
+            margin-bottom: 10px;
+            padding: 8px;
+            border-bottom: 1px solid #eee;
+        }
+        .log-entry:last-child {
+            border-bottom: none;
+        }
+        .status {
+            font-weight: bold;
+            color: #007bff;
+        }
+        .timestamp {
+            font-size: 0.9em;
+            color: #2b013f;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bitacora del ciclo de vida SW</h1>
+    <div id="log-container">
+        <h2>Estados:</h2>
+        <ul id="log"></ul>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
